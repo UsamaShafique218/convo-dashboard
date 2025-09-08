@@ -7,8 +7,7 @@ import {
 import {
   UserCircleIcon, 
   Bars3Icon,
-} from "@heroicons/react/24/solid";
-// import { useMaterialTailwindController } from "@/context";
+} from "@heroicons/react/24/solid"; 
 
 // import UserImg from "../public/img/bruce-mars.jpeg";
 import UserImg from "../../public/img/bruce-mars.jpeg";
@@ -19,21 +18,7 @@ import $ from "jquery";
 
 export function DashboardNavbar() {
  
-  // const [controller] = useMaterialTailwindController();
-    // const { fixedNavbar } = controller;
-    // const { pathname } = useLocation();
-    // const [layout, page] = pathname.split("/").filter((el) => el !== "");
-
-    // const navigate = useNavigate(); // <-- React Router navigate hook
-
-    // Logout function
-    // const handleLogout = (e) => {
-    //   e.preventDefault(); 
-    //   localStorage.removeItem("token");
-    //   localStorage.removeItem("user");
-    //   // console.log(localStorage);
-    //   navigate("/login");
-    // };
+ 
 
     useEffect(() => {
       // Navbar icon toggle
