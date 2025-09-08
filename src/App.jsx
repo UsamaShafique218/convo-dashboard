@@ -1,14 +1,18 @@
-import './App.css'
+import React from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-function App() { 
+// Import your pages
+import Home from "./pages/Home"; 
 
+import "../src/custom.css"
+import "../src/custom_responsive.css"
+
+export default function App() {
   return (
-    <>
-      <div className="flex h-screen items-center justify-center bg-red-900">
-        <h1 className="text-4xl font-bold text-white">Conva Dashbaord</h1>
-      </div>
-    </>
-  )
+    <BrowserRouter>
+      <Routes> 
+        <Route path="/" element={<Home />} /> 
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
-export default App
