@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Navbar,
@@ -15,11 +15,54 @@ import UserImg from "../../public/img/bruce-mars.jpeg";
 import PersonIcon from "../../public/img/person.svg";
 import PowerIcon from "../../public/img/power.svg";
 
-// import $ from "jquery"; 
+import $ from "jquery"; 
 
 export function DashboardNavbar() {
  
+  // const [controller] = useMaterialTailwindController();
+    // const { fixedNavbar } = controller;
+    // const { pathname } = useLocation();
+    // const [layout, page] = pathname.split("/").filter((el) => el !== "");
 
+    // const navigate = useNavigate(); // <-- React Router navigate hook
+
+    // Logout function
+    // const handleLogout = (e) => {
+    //   e.preventDefault(); 
+    //   localStorage.removeItem("token");
+    //   localStorage.removeItem("user");
+    //   // console.log(localStorage);
+    //   navigate("/login");
+    // };
+
+    useEffect(() => {
+      // Navbar icon toggle
+      $(".navbar_icon").on("click", function () {
+        $("body").toggleClass("toggle_navbar");
+      });
+
+      // User icon dropdown toggle
+      $(".user_icon").on("click", function (e) {
+        e.preventDefault();
+        $(".user_dropdown_menu").toggleClass("hidden block");
+        $(this).toggleClass("isDropdownMenuOpen");
+      });
+
+      // Close dropdown when clicking outside
+      $(document).on("click", function (e) {
+        if (!$(e.target).closest(".user_icon_main").length) {
+          $(".user_dropdown_menu").removeClass("block").addClass("hidden");
+          $(".user_icon").removeClass("isDropdownMenuOpen");
+        }
+      });
+
+      // Cleanup event bindings on unmount
+      return () => {
+        $(".navbar_icon").off("click");
+        $(".user_icon").off("click");
+        $(document).off("click");
+      };
+    }, []);
  
   return (
     <div className="navbar_main">
