@@ -561,3 +561,6 @@ body {
 
 
 .profile_page_wrapper .border {--tw-border-opacity: 1; border-color: rgb(236 239 241 / var(--tw-border-opacity));}
+
+.side_nav_link{ width: 100%;}
+.side_nav_link button{ width: inherit; }
