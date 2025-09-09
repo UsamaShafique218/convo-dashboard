@@ -5,34 +5,31 @@ import { NavLink, useLocation } from "react-router-dom";
 
 export function SideNav() { 
 
-  const location = useLocation();
+   const location = useLocation();
 
-  // Dropdown open/close state
-  const [isOpen, setIsOpen] = useState(false);
+  // check agar koi child active hai
+  const isParentActive =
+    location.pathname.startsWith("/genders") ||
+    location.pathname.startsWith("/industries") ||
+    location.pathname.startsWith("/networking-goals") ||
+    location.pathname.startsWith("/artistic-identities") ||
+    location.pathname.startsWith("/primary-mediums") ||
+    location.pathname.startsWith("/skills-and-techniques") ||
+    location.pathname.startsWith("/tools-and-software") ||
+    location.pathname.startsWith("/collaboration-goals") ||
+    location.pathname.startsWith("/interests") ||
+    location.pathname.startsWith("/work") ||
+    location.pathname.startsWith("/communication-styles") ||
+    location.pathname.startsWith("/love-languages") ||
+    location.pathname.startsWith("/zodiac-signs") ||
+    location.pathname.startsWith("/ice-breaker-prompts");
 
-  // Check if current path matches one of the child links
+  const [isOpen, setIsOpen] = useState(isParentActive);
+
   useEffect(() => {
-    if (
-      location.pathname.startsWith("/genders") ||
-      location.pathname.startsWith("/industries") ||
-      location.pathname.startsWith("/networking-goals") ||
-      location.pathname.startsWith("/artistic-identities") ||
-      location.pathname.startsWith("/primary-mediums") ||
-      location.pathname.startsWith("/skills-and-techniques") ||
-      location.pathname.startsWith("/tools-and-software") ||
-      location.pathname.startsWith("/collaboration-goals") ||
-      location.pathname.startsWith("/interests") ||
-      location.pathname.startsWith("/work") ||
-      location.pathname.startsWith("/communication-styles") ||
-      location.pathname.startsWith("/love-languages") ||
-      location.pathname.startsWith("/zodiac-signs") ||
-      location.pathname.startsWith("/ice-breaker-prompts")
-
-      
-    ) {
-      setIsOpen(true); // keep open if a child is active
-    }
+    setIsOpen(isParentActive);
   }, [location.pathname]);
+
 
   return (
     <aside className="z-50 h-100 duration-300 rounded-none side_navbar"> 
@@ -76,8 +73,11 @@ export function SideNav() {
            <li> 
               {/* Parent button */}
               <div
-                onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center justify-between gap-2 px-4 py-3 cursor-pointer side_nav_link bg-[#1d2531] text-[#b7c0cd] font-semibold"
+                 onClick={(e) => { 
+                  setIsOpen(!isOpen);
+                }}
+                className={`flex items-center justify-between gap-2 px-4 py-3 cursor-pointer side_nav_link font-semibold 
+                  ${isParentActive ? "bg-[#1d2531] text-white" : "bg-transparent text-[#b7c0cd]"}`}
               >
                 <div className="flex items-center gap-3">
                   <span>📁</span>
@@ -285,7 +285,7 @@ export function SideNav() {
               )} 
           </li>
 
-         <li>
+          <li>
             <NavLink className="side_nav_link" to={"/posts"}>
               {({ isActive }) => (
                 <Button

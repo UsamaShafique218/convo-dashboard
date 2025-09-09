@@ -289,7 +289,7 @@ export default function Work() {
                 <ConfirmDialog />
 
                 {/* Pagination */}
-                <div className="flex items-center justify-between border-t pt-2 pagination_main">
+                <div className="flex items-center justify-between   pt-2 pagination_main">
                     <div className="text-gray-700 text-sm font-medium">Total Records: {totalItems}</div>
 
                     <div className="flex items-center gap-2">

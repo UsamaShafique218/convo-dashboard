@@ -558,3 +558,6 @@ body {
 .w-full{ width: 100% !important; }
 
 .navbar_icon{ display: flex; align-items: center; justify-content: center; }
+
+
+.profile_page_wrapper .border {--tw-border-opacity: 1; border-color: rgb(236 239 241 / var(--tw-border-opacity));}
