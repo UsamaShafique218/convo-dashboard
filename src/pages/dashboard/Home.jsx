@@ -5,7 +5,7 @@ import SideNav from "../../components/SideNav";
 function Home() {
   
   return(
-    <div className="min-h-screen bg-blue-gray-50/50"> 
+    <div className="min-h-screen home_bg"> 
       <DashboardNavbar />
       <div className="pb-4 dashboard_content flex">
         <SideNav />

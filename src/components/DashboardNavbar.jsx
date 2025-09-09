@@ -8,8 +8,7 @@ import {
   UserCircleIcon, 
   Bars3Icon,
 } from "@heroicons/react/24/solid"; 
-
-// import UserImg from "../public/img/bruce-mars.jpeg";
+ 
 import UserImg from "../../public/img/bruce-mars.jpeg";
 import PersonIcon from "../../public/img/person.svg";
 import PowerIcon from "../../public/img/power.svg";

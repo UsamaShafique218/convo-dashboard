@@ -112,6 +112,7 @@ body {
   background-color: transparent !important;
   box-shadow: none !important;
   border-radius: 0px !important;
+  cursor: pointer;
 }
 
 .side_nav_btn:hover {
@@ -313,16 +314,13 @@ body {
   line-height: 24px;
   padding-bottom: 10px;
 }
-
-
-
-
-
-
+  
 
 .table_wrapper {
   width: 100%;
   overflow-x: auto;
+  --tw-border-opacity: 1;
+  border: 1px solid rgb(236 239 241 / var(--tw-border-opacity));
 }
 
 
@@ -550,3 +548,13 @@ body {
 .profile_page_inner {
   padding: 36px;
 } 
+
+
+
+.home_bg{background-color: rgb(236 239 241 / 0.5);}
+
+.border-blue-gray-50{ --tw-border-opacity: 1; border-color: rgb(236 239 241 / var(--tw-border-opacity));} 
+
+.w-full{ width: 100% !important; }
+
+.navbar_icon{ display: flex; align-items: center; justify-content: center; }

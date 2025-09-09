@@ -7,7 +7,7 @@ import SideNav from "../../components/SideNav";
 
 function Users(){
 
-    const [users, setUsers] = useState([]);
+   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -209,7 +209,10 @@ function Users(){
       })
       .finally(() => setPendingDeleteId(null));
   };
+
  
+
+
   // View handler
   const handleView = (id) => {
     setLoadingView(true);
@@ -227,8 +230,9 @@ function Users(){
       .finally(() => setLoadingView(false));
   };
 
+
     return(
-    <div className="min-h-screen bg-blue-gray-50/50"> 
+    <div className="min-h-screen home_bg"> 
         <DashboardNavbar />
         <div className="pb-4 dashboard_content flex">
             <SideNav />
@@ -252,58 +256,58 @@ function Users(){
 
                         <div className="overflow-x-auto border rounded">
                             <table className="w-full min-w-[723px] table_main">
-                                <thead className="">
-                                    <tr>
-                                    {["name","email","birthday","currentCity","homeTown","genderId","role","createdAt"].map((col) => (
-                                        <th key={col} className="cursor-pointer border-b border-blue-gray-50 py-3 px-5 text-left text-[11px] font-bold uppercase text-blue-gray-400" onClick={() => handleSort(col)}>
-                                        {col.charAt(0).toUpperCase() + col.slice(1)}
-                                        {sortConfig.key === col && (sortConfig.direction === "asc" ? " ↑" : " ↓")}
-                                        </th>
-                                    ))}
-                                    <th className="cursor-pointer border-b border-blue-gray-50 py-3 px-5 text-left text-[11px] font-bold uppercase text-blue-gray-400">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {loading ? (
-                                    <tr><td colSpan="9" className="py-4 text-center">Loading...</td></tr>
-                                    ) : currentData.length === 0 ? (
-                                    <tr><td colSpan="9" className="py-4 text-center">No users found.</td></tr>
-                                    ) : currentData.map((u) => (
-                                    <tr key={u._id}>
-                                        <td className="py-[10px] px-5 border-b border-blue-gray-50">{u.name}</td>
-                                        <td className="py-[10px] px-5 border-b border-blue-gray-50">{u.email}</td>
-                                        <td className="py-[10px] px-5 border-b border-blue-gray-50">{u.birthday ? new Date(u.birthday).toLocaleDateString() : "-"}</td>
-                                        <td className="py-[10px] px-5 border-b border-blue-gray-50">{u.currentCity}</td>
-                                        <td className="py-[10px] px-5 border-b border-blue-gray-50">{u.homeTown}</td>
-                                        <td className="py-[10px] px-5 border-b border-blue-gray-50">{u.genderId}</td>
-                                        <td className="py-[10px] px-5 border-b border-blue-gray-50">{u.role}</td>
-                                        <td className="py-[10px] px-5 border-b border-blue-gray-50">{u.createdAt ? new Date(u.createdAt).toLocaleString() : "-"}</td>
-                                        <td className="py-[10px] px-5 border-b border-blue-gray-50 text-center"> 
-                                        <div className="flex items-center justify-center gap-2">
-                                            <i className="edit_dlt_icon" onClick={() => startEdit(u)}>
-                                            <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                                            </svg>
-                                            </i>
-                                            <i onClick={() => confirmDelete(u._id)} className="edit_dlt_icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="24" height="24" fill="red">
-                                                <path d="M 14.984375 2.4863281 A 1 1 0 0 0 14 3.5 L 14 4 L 8.5 4 A 1 1 0 0 0 7.5 5 L 6 5 A 1 1 0 1 0 6 7 L 24 7 A 1 1 0 1 0 24 5 L 22.5 5 A 1 1 0 0 0 21.5 4 L 16 4 L 16 3.5 A 1 1 0 0 0 14.984375 2.4863281 z M 6 9 L 7.8 24.2 C 7.9 25.2 8.8 26 9.8 26 H 20.2 C 21.2 26 22.1 25.2 22.2 24.2 L 24 9 Z" />
-                                            </svg>
-                                            </i>
+                            <thead className="">
+                                <tr>
+                                {["name","email","birthday","currentCity","homeTown","genderId","role","createdAt"].map((col) => (
+                                    <th key={col} className="cursor-pointer border-b border-blue-gray-50 py-3 px-5 text-left text-[11px] font-bold uppercase text-blue-gray-400" onClick={() => handleSort(col)}>
+                                    {col.charAt(0).toUpperCase() + col.slice(1)}
+                                    {sortConfig.key === col && (sortConfig.direction === "asc" ? " ↑" : " ↓")}
+                                    </th>
+                                ))}
+                                <th className="cursor-pointer border-b border-blue-gray-50 py-3 px-5 text-left text-[11px] font-bold uppercase text-blue-gray-400">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {loading ? (
+                                <tr><td colSpan="9" className="py-4 text-center">Loading...</td></tr>
+                                ) : currentData.length === 0 ? (
+                                <tr><td colSpan="9" className="py-4 text-center">No users found.</td></tr>
+                                ) : currentData.map((u) => (
+                                <tr key={u._id}>
+                                    <td className="py-[10px] px-5 border-b border-blue-gray-50">{u.name}</td>
+                                    <td className="py-[10px] px-5 border-b border-blue-gray-50">{u.email}</td>
+                                    <td className="py-[10px] px-5 border-b border-blue-gray-50">{u.birthday ? new Date(u.birthday).toLocaleDateString() : "-"}</td>
+                                    <td className="py-[10px] px-5 border-b border-blue-gray-50">{u.currentCity}</td>
+                                    <td className="py-[10px] px-5 border-b border-blue-gray-50">{u.homeTown}</td>
+                                    <td className="py-[10px] px-5 border-b border-blue-gray-50">{u.genderId}</td>
+                                    <td className="py-[10px] px-5 border-b border-blue-gray-50">{u.role}</td>
+                                    <td className="py-[10px] px-5 border-b border-blue-gray-50">{u.createdAt ? new Date(u.createdAt).toLocaleString() : "-"}</td>
+                                    <td className="py-[10px] px-5 border-b border-blue-gray-50 text-center"> 
+                                    <div className="flex items-center justify-center gap-2">
+                                        <i className="edit_dlt_icon" onClick={() => startEdit(u)}>
+                                        <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                        </svg>
+                                        </i>
+                                        <i onClick={() => confirmDelete(u._id)} className="edit_dlt_icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="24" height="24" fill="red">
+                                            <path d="M 14.984375 2.4863281 A 1 1 0 0 0 14 3.5 L 14 4 L 8.5 4 A 1 1 0 0 0 7.5 5 L 6 5 A 1 1 0 1 0 6 7 L 24 7 A 1 1 0 1 0 24 5 L 22.5 5 A 1 1 0 0 0 21.5 4 L 16 4 L 16 3.5 A 1 1 0 0 0 14.984375 2.4863281 z M 6 9 L 7.8 24.2 C 7.9 25.2 8.8 26 9.8 26 H 20.2 C 21.2 26 22.1 25.2 22.2 24.2 L 24 9 Z" />
+                                        </svg>
+                                        </i>
 
-                                            <button className="all_btn" onClick={() => handleView(u._id)}>View</button>
+                                        <button className="all_btn" onClick={() => handleView(u._id)}>View</button>
 
-                                        </div>
-                                        </td>
-                                    </tr>
-                                    ))}
-                                </tbody>
+                                    </div>
+                                    </td>
+                                </tr>
+                                ))}
+                            </tbody>
                             </table>
                         </div>
 
                         {/* Pagination */}
-                        <div className="flex items-center justify-between border-t pt-2 pagination_main">
+                        <div className="flex items-center justify-between pt-2 pagination_main">
                             <div className="text-gray-700 text-sm font-medium">Total Records: {totalItems}</div>
                             <div className="flex items-center gap-2">
                             <button className="px-2 py-1 rounded border text-gray-600 disabled:opacity-30" onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))} disabled={currentPage === 1}>&lt;</button>
@@ -399,7 +403,8 @@ function Users(){
                                 </div>
                             </div>
                             </div>
-                        )} 
+                        )}
+                    
                         {/* View Modal */}
                         {showViewModal && (
                             <div className="popup_main">
@@ -527,8 +532,7 @@ function Users(){
                                 </div>
                             </div>
                             </div>
-                        )} 
-                    
+                        )}  
                     </div>
                 </div>
             </div>
