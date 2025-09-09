@@ -169,7 +169,7 @@ export default function Posts() {
                         </div>
 
                         {/* Table */}
-                        <div className="overflow-x-auto border rounded">
+                        <div className="overflow-x-auto">
                             <table className="w-full min-w-[723px] table_main">
                                 <thead>
                                     <tr>
@@ -193,13 +193,13 @@ export default function Posts() {
                                         <tr><td colSpan="6" className="py-4 text-center">No posts found.</td></tr>
                                     ) : currentData.map((p) => (
                                         <tr key={p._id}>
-                                            <td className="py-[10px] px-5 border-b">
+                                            <td className="py-[10px] px-5 border-b border-blue-gray-50">
                                                 {typeof p.author === 'object' ? p.author.name || "-" : p.author || "-"}
                                             </td>
-                                            <td className="py-[10px] px-5 border-b">{p.content ? `${p.content.substring(0, 50)}${p.content.length > 50 ? '...' : ''}` : "-"}</td>
-                                            <td className="py-[10px] px-5 border-b">{p.eventDate ? new Date(p.eventDate).toLocaleDateString() : "-"}</td>
-                                            <td className="py-[10px] px-5 border-b">{p.createdAt ? new Date(p.createdAt).toLocaleString() : "-"}</td>
-                                            <td className="py-[10px] px-5 border-b text-center">
+                                            <td className="py-[10px] px-5 border-b border-blue-gray-50">{p.content ? `${p.content.substring(0, 50)}${p.content.length > 50 ? '...' : ''}` : "-"}</td>
+                                            <td className="py-[10px] px-5 border-b border-blue-gray-50">{p.eventDate ? new Date(p.eventDate).toLocaleDateString() : "-"}</td>
+                                            <td className="py-[10px] px-5 border-b border-blue-gray-50">{p.createdAt ? new Date(p.createdAt).toLocaleString() : "-"}</td>
+                                            <td className="py-[10px] px-5 border-b border-blue-gray-50 text-center">
                                                 <div className="flex items-center justify-center gap-2">
                                                     <button className="all_btn" onClick={() => handleView(p._id)}>View</button>
                                                 </div>

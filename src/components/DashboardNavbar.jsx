@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Navbar,
   IconButton,
@@ -16,7 +16,15 @@ import PowerIcon from "../../public/img/power.svg";
 import $ from "jquery"; 
 
 export function DashboardNavbar() {
- 
+
+  const navigate = useNavigate(); 
+
+  const handleLogout = (e) => {
+    e.preventDefault(); 
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/login");  
+  };
  
 
     useEffect(() => {
@@ -60,7 +68,7 @@ export function DashboardNavbar() {
           <IconButton
             variant="text"
             color="blue-gray"
-            className="grid navbar_icon"
+            className="grid navbar_icon cursor-pointer"
           >
             <Bars3Icon strokeWidth={3} className="h-6 w-6 text-blue-gray-500" />
           </IconButton>
@@ -90,8 +98,7 @@ export function DashboardNavbar() {
                   <small className="text-gray-500">Admin</small>
                 </div>
               </a>
-            </li>
-
+            </li> 
             <li>
               <Link
                 to="/profile"
@@ -100,16 +107,12 @@ export function DashboardNavbar() {
                 <img src={PersonIcon} alt="Profile" className="w-5 h-5 mr-2" />
                 <small>My Profile</small>
               </Link>
-            </li>
-
-            <li>
-              <button
-                
-                className="dropdown-item flex items-center p-2 hover:bg-gray-100 rounded-md w-full"
-              >
-                <img src={PowerIcon} alt="Logout" className="w-5 h-5 mr-2" />
-                <small>Log Out</small>
-              </button>
+            </li> 
+            <li> 
+                <button onClick={handleLogout} className="dropdown-item flex items-center p-2 hover:bg-gray-100 rounded-md w-full cursor-pointer" >
+                  <img src={PowerIcon} alt="Logout" className="w-5 h-5 mr-2" />
+                  <small className="flex">Log Out</small>
+                </button> 
             </li>
           </ul>
         </div>

@@ -254,7 +254,7 @@ function Users(){
                             <button className="all_btn pt_12 pb_12" onClick={() => setShowModal(true)}>Add User</button>
                         </div>
 
-                        <div className="overflow-x-auto border rounded">
+                        <div className="overflow-x-auto rounded">
                             <table className="w-full min-w-[723px] table_main">
                             <thead className="">
                                 <tr>

@@ -364,7 +364,7 @@ body {
   width: auto !important;
 }
 
-
+.user_icon button{ cursor: pointer; }
 .user_icon_main {
   position: relative;
 }

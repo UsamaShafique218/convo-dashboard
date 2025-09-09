@@ -1,10 +1,9 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-// Import your pages 
-
-import "../src/custom.css"
-import "../src/custom_responsive.css"
+// Import your pages
+import "../src/custom.css";
+import "../src/custom_responsive.css";
 import Home from "./pages/dashboard/Home";
 import Users from "./pages/dashboard/Users";
 import Genders from "./pages/dashboard/references_data/Genders";
@@ -23,31 +22,164 @@ import ZodiacSigns from "./pages/dashboard/references_data/ZodiacSigns";
 import IceBreakerPrompts from "./pages/dashboard/references_data/IceBreakerPrompts";
 import Posts from "./pages/dashboard/Posts";
 
+import SignIn from "./pages/auth/SignIn";
+import Auth from "./pages/auth/Auth"; 
+
+ 
+const ProtectedRoute = ({ children }) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (!user?.token) {
+    return <Navigate to="/auth/sign-in" replace />;
+  }
+  return children;
+};
+
 export default function App() {
   return (
     <BrowserRouter>
       <Routes> 
-        <Route path="/" element={<Home />} /> 
-        <Route path="/users" element={<Users />} /> 
-
-
-        <Route path="/genders" element={<Genders />} /> 
-        <Route path="/industries" element={<Industries />} />  
-        <Route path="/networking-goals" element={<NetworkingGoals />} />  
-        <Route path="/artistic-identities" element={<ArtisticIdentities />} />  
-        <Route path="/primary-mediums" element={<PrimaryMediums />} />  
-        <Route path="/skills-and-techniques" element={<SkillsAndTechniques />} />  
-        <Route path="/tools-and-software" element={<ToolsAndSoftware />} />  
-        <Route path="/collaboration-goals" element={<CollaborationGoals />} />  
-        <Route path="/interests" element={<Interests />} />  
-        <Route path="/work" element={<Work />} />  
-        <Route path="/communication-styles" element={<CommunicationStyles />} />  
-        <Route path="/love-languages" element={<LoveLanguages />} />  
-        <Route path="/zodiac-signs" element={<ZodiacSigns />} />  
-        <Route path="/ice-breaker-prompts" element={<IceBreakerPrompts />} />  
-        <Route path="/posts" element={<Posts />} />  
-         
-         
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/users"
+          element={
+            <ProtectedRoute>
+              <Users />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/genders"
+          element={
+            <ProtectedRoute>
+              <Genders />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/industries"
+          element={
+            <ProtectedRoute>
+              <Industries />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/networking-goals"
+          element={
+            <ProtectedRoute>
+              <NetworkingGoals />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/artistic-identities"
+          element={
+            <ProtectedRoute>
+              <ArtisticIdentities />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/primary-mediums"
+          element={
+            <ProtectedRoute>
+              <PrimaryMediums />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/skills-and-techniques"
+          element={
+            <ProtectedRoute>
+              <SkillsAndTechniques />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/tools-and-software"
+          element={
+            <ProtectedRoute>
+              <ToolsAndSoftware />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/collaboration-goals"
+          element={
+            <ProtectedRoute>
+              <CollaborationGoals />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/interests"
+          element={
+            <ProtectedRoute>
+              <Interests />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/work"
+          element={
+            <ProtectedRoute>
+              <Work />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/communication-styles"
+          element={
+            <ProtectedRoute>
+              <CommunicationStyles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/love-languages"
+          element={
+            <ProtectedRoute>
+              <LoveLanguages />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/zodiac-signs"
+          element={
+            <ProtectedRoute>
+              <ZodiacSigns />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/ice-breaker-prompts"
+          element={
+            <ProtectedRoute>
+              <IceBreakerPrompts />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/posts"
+          element={
+            <ProtectedRoute>
+              <Posts />
+            </ProtectedRoute>
+          }
+        />
+ 
+        <Route path="/auth" element={<Auth />}>
+          <Route path="sign-in" element={<SignIn />} />
+        </Route>
+ 
+        <Route path="*" element={<Navigate to="/auth/sign-in" replace />} />
       </Routes>
     </BrowserRouter>
   );
